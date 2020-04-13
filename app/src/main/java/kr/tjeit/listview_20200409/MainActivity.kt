@@ -2,6 +2,7 @@ package kr.tjeit.listview_20200409
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kr.tjeit.listview_20200409.adapters.RoomAdapter
 import kr.tjeit.listview_20200409.datas.Room
@@ -27,6 +28,19 @@ class MainActivity : AppCompatActivity() {
         mRoomAdapter = RoomAdapter(this, R.layout.room_list_item, roomList)
         roomListView.adapter = mRoomAdapter
 
+        roomListView.setOnItemClickListener { parent, view, position, id ->
+
+//            몇번줄을 눌렀는지 토스트로 출력
+            Toast.makeText(this, "${position}번 줄 클릭", Toast.LENGTH_SHORT).show()
+
+        }
+
+        roomListView.setOnItemLongClickListener { parent, view, position, id ->
+
+            Toast.makeText(this, "${position}번 줄 오래 클릭", Toast.LENGTH_SHORT).show()
+
+            return@setOnItemLongClickListener  true
+        }
 
     }
 }
